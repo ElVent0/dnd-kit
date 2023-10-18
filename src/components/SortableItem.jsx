@@ -1,7 +1,7 @@
 import { useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
 
-export const SortableItem = (props) => {
+const SortableItem = (props) => {
   const { attributes, listeners, setNodeRef, transform, transition } =
     useSortable({ id: props.id });
 
@@ -22,3 +22,4 @@ export const SortableItem = (props) => {
     </li>
   );
 };
+export default SortableItem;
