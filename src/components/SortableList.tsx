@@ -1,11 +1,17 @@
+import { FC } from "react";
 import {
   SortableContext,
   verticalListSortingStrategy,
 } from "@dnd-kit/sortable";
-import SortableItem from "./SortableItem.jsx";
+import SortableItem from "./SortableItem";
 import { useDroppable } from "@dnd-kit/core";
 
-const SortableList = ({ items, id }) => {
+interface SortableListProps {
+  items: string[];
+  id: string;
+}
+
+const SortableList: FC<SortableListProps> = ({ items, id }) => {
   const { setNodeRef } = useDroppable({
     id,
   });
@@ -13,7 +19,7 @@ const SortableList = ({ items, id }) => {
   return (
     <ul className="w-64 mr-4 p-2 border border-blue-300 bg-blue-200 rounded-md">
       <SortableContext
-        id={items}
+        id={id}
         items={items}
         strategy={verticalListSortingStrategy}
       >

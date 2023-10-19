@@ -1,11 +1,16 @@
 import { useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
+import { FC } from "react";
 
-const SortableItem = (props) => {
+interface SortableItemProps {
+  id: string;
+}
+
+const SortableItem: FC<SortableItemProps> = (props) => {
   const { attributes, listeners, setNodeRef, transform, transition } =
     useSortable({ id: props.id });
 
-  const style = {
+  const style: React.CSSProperties = {
     transform: CSS.Transform.toString(transform),
     transition,
   };
@@ -22,4 +27,5 @@ const SortableItem = (props) => {
     </li>
   );
 };
+
 export default SortableItem;

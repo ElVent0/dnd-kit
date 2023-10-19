@@ -1,12 +1,12 @@
-import React, { useState } from "react";
+import { FC, useState } from "react";
 import { DndContext, closestCenter } from "@dnd-kit/core";
 import { arrayMove } from "@dnd-kit/sortable";
-import SortableList from "./SortableList.jsx";
+import SortableList from "./SortableList";
 import { handleDragOver, handleDragEnd } from "../utils/handleDrag";
 import { useDefaultSensors } from "../hooks/useDefaultSensors";
 
-const DragAndDrop = () => {
-  const [items, setItems] = useState({
+const DragAndDrop: FC = () => {
+  const [items, setItems] = useState<Record<string, string[]>>({
     numbers: ["First", "Second", "Third", "Fourth", "Fifth"],
     colors: ["Blue", "Yellow", "Red", "Green", "Black"],
     days: ["Mon", "Tue", "Wed", "Thu", "Fri"],
@@ -23,8 +23,8 @@ const DragAndDrop = () => {
         onDragEnd={(event) => handleDragEnd(event, items, setItems, arrayMove)}
       >
         {!!items &&
-          Object.entries(items).map((item, index) => (
-            <SortableList key={index} items={item[1]} id={item[0]} />
+          Object.entries(items).map(([key, value], index) => (
+            <SortableList key={index} items={value} id={key} />
           ))}
       </DndContext>
     </div>
