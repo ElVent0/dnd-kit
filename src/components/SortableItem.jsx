@@ -16,7 +16,7 @@ const SortableItem = (props) => {
       style={style}
       {...attributes}
       {...listeners}
-      className="text-lg bg-gray-50 rounded-md px-4 py-2 mb-2 last-of-type:mb-0"
+      className="text-lg bg-gray-50 rounded-md px-4 py-1.5 mb-2 last-of-type:mb-0"
     >
       {props.id}
     </li>

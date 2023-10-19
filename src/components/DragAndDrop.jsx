@@ -12,8 +12,6 @@ const DragAndDrop = () => {
     days: ["Mon", "Tue", "Wed", "Thu", "Fri"],
   });
 
-  console.log(items);
-
   const sensors = useDefaultSensors();
 
   return (
@@ -26,7 +24,7 @@ const DragAndDrop = () => {
       >
         {!!items &&
           Object.entries(items).map((item, index) => (
-            <SortableList key={index} items={item[1]} />
+            <SortableList key={index} items={item[1]} id={item[0]} />
           ))}
       </DndContext>
     </div>
