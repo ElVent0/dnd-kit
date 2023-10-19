@@ -1,11 +1,18 @@
-export const handleDragOver = (event, findContainer, setItems, items) => {
+const findContainer = (id, items) => {
+  if (id in items) {
+    return id;
+  }
+  return Object.keys(items).find((key) => items[key].includes(id));
+};
+
+export const handleDragOver = (event, setItems, items) => {
   const { active, over, activatorEvent } = event;
 
   const { id } = active;
   const { id: overId } = over;
 
-  const activeContainer = findContainer(id);
-  const overContainer = findContainer(overId);
+  const activeContainer = findContainer(id, items);
+  const overContainer = findContainer(overId, items);
 
   if (!activeContainer || !overContainer || activeContainer === overContainer) {
     return;
@@ -44,4 +51,27 @@ export const handleDragOver = (event, findContainer, setItems, items) => {
       ],
     };
   });
+};
+
+export const handleDragEnd = (event, items, setItems, arrayMove) => {
+  const { active, over } = event;
+  const { id } = active;
+  const { id: overId } = over;
+
+  const activeContainer = findContainer(id, items);
+  const overContainer = findContainer(overId, items);
+
+  if (!activeContainer || !overContainer || activeContainer !== overContainer) {
+    return;
+  }
+
+  const activeIndex = items[activeContainer].indexOf(active.id);
+  const overIndex = items[overContainer].indexOf(overId);
+
+  if (activeIndex !== overIndex) {
+    setItems((items) => ({
+      ...items,
+      [overContainer]: arrayMove(items[overContainer], activeIndex, overIndex),
+    }));
+  }
 };

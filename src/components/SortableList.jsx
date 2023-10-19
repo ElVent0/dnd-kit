@@ -6,7 +6,7 @@ import SortableItem from "./SortableItem.jsx";
 
 const SortableList = ({ items }) => {
   return (
-    <ul className="w-64 mr-4">
+    <ul className="w-64 mr-4 p-2 border border-blue-300 bg-blue-200 rounded-md">
       <SortableContext
         id={items}
         items={items}
