@@ -1,8 +1,8 @@
-import React from "react";
+import { FC } from "react";
 import DragAndDrop from "./components/DragAndDrop";
 import { Routes, Route } from "react-router-dom";
 
-const App: React.FC = () => {
+const App: FC = () => {
   return (
     <Routes>
       <Route path="/" element={<DragAndDrop />} />
