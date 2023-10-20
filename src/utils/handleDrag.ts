@@ -68,7 +68,7 @@ export const handleDragEnd = (
 
   const activeContainer = active.data.current?.sortable.containerId;
   const overContainer = over.data.current?.sortable.containerId || over.id;
-  if (activeContainer === overContainer) return;
+  // if (activeContainer === overContainer) return;
 
   if (!activeContainer || !overContainer || activeContainer !== overContainer) {
     return;
